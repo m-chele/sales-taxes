@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class CosoDiTest { // TODO: rename in ReceiptTest
+public class ReceiptTest { // TODO: rename in ReceiptTest
 
 
     @Test
