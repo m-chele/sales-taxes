@@ -6,13 +6,14 @@ public class ReceiptTest {
 
 
     @Test
-    public void one_row_for_one_good() {
+    public void one_row_for_each_good() {
         Receipt receipt = new Receipt();
+        receipt.add(new Good());
         receipt.add(new Good());
 
         String result = receipt.calculate();
 
-        assertEquals("good name", result);
+        assertEquals("good name\ngood name\n", result);
     }
 
     @Test

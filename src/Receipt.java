@@ -1,16 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Receipt {
-    private Good good;
+    private List<Good> goods = new ArrayList();
 
     public String calculate() {
+        String result = "";
+        for (Good g : goods) {
+            result += g.name() + "\n";
+        }
 
-        if(null != good)
-            return good.name();
-
-        return "";
+        return result;
     }
 
     public void add(Good good) {
 
-        this.good = good;
+        goods.add(good);
     }
 }
