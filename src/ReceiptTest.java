@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class ReceiptTest { // TODO: rename in ReceiptTest
+public class ReceiptTest {
 
 
     @Test
