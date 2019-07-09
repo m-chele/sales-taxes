@@ -7,7 +7,7 @@ public class Receipt {
     public String calculate() {
         String result = "";
         for (Good g : goods) {
-            result += g.name() + "\n";
+            result += g.name() + " at " + String.format("%.2f", g.price()) + "\n";
         }
 
         return result;

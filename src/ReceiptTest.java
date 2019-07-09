@@ -4,16 +4,15 @@ import static junit.framework.TestCase.assertEquals;
 
 public class ReceiptTest {
 
-
     @Test
     public void one_row_for_each_good() {
         Receipt receipt = new Receipt();
-        receipt.add(new Good());
-        receipt.add(new Good());
+        receipt.add(new Good("good name", 10.0));
+        receipt.add(new Good("good name", 10.0));
 
         String result = receipt.calculate();
 
-        assertEquals("good name\ngood name\n", result);
+        assertEquals("good name at 10.00\ngood name at 10.00\n", result);
     }
 
     @Test
