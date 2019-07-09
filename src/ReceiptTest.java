@@ -10,18 +10,18 @@ public class ReceiptTest {
         receipt.add(new Good("good name", 10.0));
         receipt.add(new Good("good name", 10.0));
 
-        String result = receipt.calculate();
+        String output = receipt.output();
 
-        assertEquals("good name at 10.00\ngood name at 10.00\n", result);
+        assertEquals("good name at 10.00\ngood name at 10.00\n", output);
     }
 
     @Test
     public void empty_result_if_no_goods_added() {
         Receipt receipt = new Receipt();
 
-        String result = receipt.calculate();
+        String output = receipt.output();
 
-        assertEquals("", result);
+        assertEquals("", output);
     }
 
 
