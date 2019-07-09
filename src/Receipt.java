@@ -3,14 +3,15 @@ import java.util.List;
 
 public class Receipt {
     private List<Good> goods = new ArrayList();
+    private ReceiptRow receiptRow = new ReceiptRow();
 
     public String calculate() {
-        String result = "";
-        for (Good g : goods) {
-            result += g.name() + " at " + String.format("%.2f", g.price()) + "\n";
+        String rows = "";
+        for (Good good : goods) {
+            rows += receiptRow.getFor(good);
         }
 
-        return result;
+        return rows;
     }
 
     public void add(Good good) {
