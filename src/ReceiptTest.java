@@ -4,11 +4,14 @@ import static junit.framework.TestCase.assertEquals;
 
 public class ReceiptTest {
 
+    private Tax NOT_INTERESTING_TAX = price -> price;
+
     @Test
     public void one_row_for_each_good() {
         Receipt receipt = new Receipt();
-        receipt.add(new Good("good name", 10.0));
-        receipt.add(new Good("good name", 10.0));
+
+        receipt.add(new Good("good name", 10.0, NOT_INTERESTING_TAX));
+        receipt.add(new Good("good name", 10.0, NOT_INTERESTING_TAX));
 
         String output = receipt.output();
 

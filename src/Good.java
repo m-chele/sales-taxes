@@ -1,18 +1,20 @@
 public class Good {
     private final String name;
     private final double price;
+    private Tax tax;
 
-    public Good(String name, double price) {
+    public Good(String name, double price, Tax tax) {
 
         this.name = name;
         this.price = price;
+        this.tax = tax;
     }
 
     public String name() {
         return name;
     }
 
-    public double price() {
-        return price;
+    public double taxedPrice() {
+        return tax.calculatePrice(price);
     }
 }
