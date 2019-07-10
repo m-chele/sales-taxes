@@ -12,9 +12,9 @@ public class Receipt {
             goodRows += receiptRow.getFor(good);
             taxesTotalAmount += good.taxAmount();
         }
-        if(taxesTotalAmount > 0.0) {
+        if (taxesTotalAmount > 0.0) {
             goodRows += "\n";
-            goodRows += "Sales Taxes: " + taxesTotalAmount + "\n";
+            goodRows += "Sales Taxes: " + String.format("%.2f", taxesTotalAmount) + "\n"; // TODO: fomrattazione duplicata
         }
         return goodRows;
     }
