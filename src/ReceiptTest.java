@@ -15,7 +15,7 @@ public class ReceiptTest {
 
         String output = receipt.output();
 
-        assertEquals("1 good name at 10.00\n1 good name at 10.00\n", output);
+        assertEquals("1 good name at 10.00\n1 good name at 10.00\nTotal: 20.00", output);
     }
 
     @Test
