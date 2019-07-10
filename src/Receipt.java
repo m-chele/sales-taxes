@@ -6,22 +6,22 @@ public class Receipt {
     private ReceiptRow receiptRow = new ReceiptRow();
 
     public String output() {
-        String goodRows = "";
+        String receiptRows = "";
         double totalReceiptAmount = 0.0;
         double taxesTotalAmount = 0.0;
         for (Good good : goods) {
-            goodRows += receiptRow.getFor(good);
+            receiptRows += receiptRow.getFor(good);
             taxesTotalAmount += good.taxAmount();
             totalReceiptAmount += good.taxedPrice();
         }
         if (taxesTotalAmount > 0.0) {
-            goodRows += "\n";
-            goodRows += "Sales Taxes: " + String.format("%.2f", taxesTotalAmount) + "\n"; // TODO: formattazione duplicata
+            receiptRows += "\n";
+            receiptRows += "Sales Taxes: " + String.format("%.2f", taxesTotalAmount) + "\n"; // TODO: formattazione duplicata
         }
         if (totalReceiptAmount > 0.0) {
-            goodRows += "Total: " + String.format("%.2f", totalReceiptAmount);
+            receiptRows += "Total: " + String.format("%.2f", totalReceiptAmount);
         }
-        return goodRows;
+        return receiptRows;
     }
 
     public void add(Good good) {
