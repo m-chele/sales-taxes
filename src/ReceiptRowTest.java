@@ -10,7 +10,7 @@ public class ReceiptRowTest {
         BasicSalesTax tax = new BasicSalesTax();
         Good aGood = new Good("good name", 10, tax);
 
-        assertEquals("good name at 11.00\n", receiptRow.getFor(aGood));
+        assertEquals("1 good name at 11.00\n", receiptRow.getFor(aGood));
     }
 
 }
