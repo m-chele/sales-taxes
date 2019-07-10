@@ -6,12 +6,17 @@ public class Receipt {
     private ReceiptRow receiptRow = new ReceiptRow();
 
     public String output() {
-        String rows = "";
+        String goodRows = "";
+        double taxesTotalAmount = 0.0;
         for (Good good : goods) {
-            rows += receiptRow.getFor(good);
+            goodRows += receiptRow.getFor(good);
+            taxesTotalAmount += good.taxAmount();
         }
-
-        return rows;
+        if(taxesTotalAmount > 0.0) {
+            goodRows += "\n";
+            goodRows += "Sales Taxes: " + taxesTotalAmount + "\n";
+        }
+        return goodRows;
     }
 
     public void add(Good good) {

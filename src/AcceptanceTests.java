@@ -16,21 +16,17 @@ public class AcceptanceTests {
         receipt.add(new Good("music CD", 14.99, new BasicSalesTax()));
         receipt.add(new Good("chocolate bar", 0.85, new NoTax()));
 
-        String output1 = "1 book at 12.49\n" +
-                "1 music CD at 16.49\n" +
-                "1 chocolate bar at 0.85\n";
+        String output1 = "1 book at 12.49\n"
+                + "1 music CD at 16.49\n"
+                + "1 chocolate bar at 0.85\n"
+                + "\n"
+                + "Sales Taxes: 1.50\n"
+                + "Total: 29.83";
 
         assertEquals(output1, receipt.output());
-//    Output 1:
-//            1 book : 12.49
-//            1 music CD: 16.49
-//            1 chocolate bar: 0.85
-//
-//    Sales Taxes: 1.50
-//    Total: 29.83
-
     }
-//    Input 2:
+
+    //    Input 2:
 //            1 imported box of chocolates at 10.00
 //            1 imported bottle of perfume at 47.50
 //

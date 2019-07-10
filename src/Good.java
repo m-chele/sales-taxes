@@ -15,6 +15,10 @@ public class Good {
     }
 
     public double taxedPrice() {
-        return tax.calculatePrice(price);
+        return price + tax.taxValue(price);
+    }
+
+    public double taxAmount() {
+        return tax.taxValue(price);
     }
 }

@@ -8,14 +8,14 @@ public class TaxesTest {
     public void NoTax_does_not_change_the_price() {
         NoTax tax = new NoTax();
 
-        assertEquals(66.66, tax.calculatePrice(66.66));
+        assertEquals(0.0, tax.taxValue(66.66));
     }
 
     @Test
-    public void BasicSalesTax_adds_10_percent() {
+    public void BasicSalesTax_is_10_percent() {
         BasicSalesTax tax = new BasicSalesTax();
 
-        assertEquals(110.00, tax.calculatePrice(100.00));
+        assertEquals(10.00, tax.taxValue(100.00));
     }
 
 }

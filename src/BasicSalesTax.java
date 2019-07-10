@@ -1,6 +1,6 @@
 public class BasicSalesTax implements Tax {
 
-    public double calculatePrice(double price) {
-        return price + price / 10;
+    public double taxValue(double price) {
+        return price / 10;
     }
 }

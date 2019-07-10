@@ -4,7 +4,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class ReceiptTest {
 
-    private Tax NOT_INTERESTING_TAX = price -> price;
+    private Tax NOT_INTERESTING_TAX = price -> 0;
 
     @Test
     public void one_row_for_each_good() {
