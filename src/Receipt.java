@@ -16,10 +16,10 @@ public class Receipt {
         }
         if (taxesTotalAmount > 0.0) {
             receiptRows += "\n";
-            receiptRows += "Sales Taxes: " + PriceFormat.getFor(taxesTotalAmount) + "\n";
+            receiptRows += "Sales Taxes: " + PriceString.from(taxesTotalAmount) + "\n";
         }
         if (totalReceiptAmount > 0.0) {
-            receiptRows += "Total: " + PriceFormat.getFor(totalReceiptAmount);
+            receiptRows += "Total: " + PriceString.from(totalReceiptAmount);
         }
         return receiptRows;
     }
