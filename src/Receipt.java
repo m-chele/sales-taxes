@@ -16,10 +16,10 @@ public class Receipt {
         }
         if (taxesTotalAmount > 0.0) {
             receiptRows += "\n";
-            receiptRows += "Sales Taxes: " + String.format("%.2f", taxesTotalAmount) + "\n"; // TODO: formattazione duplicata
+            receiptRows += "Sales Taxes: " + PriceFormat.getFor(taxesTotalAmount) + "\n";
         }
         if (totalReceiptAmount > 0.0) {
-            receiptRows += "Total: " + String.format("%.2f", totalReceiptAmount);
+            receiptRows += "Total: " + PriceFormat.getFor(totalReceiptAmount);
         }
         return receiptRows;
     }

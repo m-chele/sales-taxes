@@ -4,7 +4,7 @@ public class ReceiptRow {
         return "1 "   // TODO: assumiamo che ci sia un solo articolo per tipo
                 + good.name()
                 + " at "
-                + String.format("%.2f", good.taxedPrice())
+                + PriceFormat.getFor(good.taxedPrice())
                 + "\n";
 
     }
