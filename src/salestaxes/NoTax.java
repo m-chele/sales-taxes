@@ -1,3 +1,5 @@
+package salestaxes;
+
 public class NoTax implements Tax {
     @Override
     public double taxValue(double price) {

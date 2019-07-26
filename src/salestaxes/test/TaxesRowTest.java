@@ -1,4 +1,7 @@
+package salestaxes.test;
+
 import org.junit.Test;
+import salestaxes.TaxesRow;
 
 import static junit.framework.TestCase.assertEquals;
 

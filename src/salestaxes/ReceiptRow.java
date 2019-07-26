@@ -1,3 +1,5 @@
+package salestaxes;
+
 public class ReceiptRow {
 
     private Good good;

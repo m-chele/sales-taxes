@@ -1,3 +1,5 @@
+package salestaxes;
+
 public class TaxesRow {
     private double taxesAmount;
 

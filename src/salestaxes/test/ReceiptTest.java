@@ -1,4 +1,9 @@
+package salestaxes.test;
+
 import org.junit.Test;
+import salestaxes.Good;
+import salestaxes.Receipt;
+import salestaxes.Tax;
 
 import static junit.framework.TestCase.assertEquals;
 

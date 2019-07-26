@@ -1,6 +1,9 @@
-import org.junit.Test;
+package salestaxes.test;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+import salestaxes.PriceString;
+
+import static org.junit.Assert.assertEquals;
 
 public class PriceStringTest {
 

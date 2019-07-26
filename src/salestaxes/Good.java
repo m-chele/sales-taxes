@@ -1,3 +1,5 @@
+package salestaxes;
+
 public class Good {
     private final String name;
     private final double price;
