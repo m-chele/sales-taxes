@@ -10,17 +10,17 @@ public class Receipt {
         String receiptRows = "";
         double totalReceiptAmount = 0.0;
         double taxesTotalAmount = 0.0;
+
         for (Good good : goods) {
             receiptRows += new ReceiptRow(good).get();
-            taxesTotalAmount += good.taxAmount();
-            totalReceiptAmount += good.taxedPrice();
+            taxesTotalAmount += good.taxAmount(); // TODO: should be totalTaxes.add(good.taxAmount())
+            totalReceiptAmount += good.taxedPrice();// TODO: should be totalAmount.add(good.taxedPrice())
         }
-        receiptRows += "\n";
-        receiptRows += new TaxesRow(taxesTotalAmount).get();
 
-        if (totalReceiptAmount > 0.0) {
-            receiptRows += "Total: " + PriceString.from(totalReceiptAmount);
-        }
+        receiptRows += "\n"; // TODO: should be EmptyRow().get()
+        receiptRows += new TaxesRow(taxesTotalAmount).get();
+        receiptRows += new TotalRow(totalReceiptAmount).get();
+
         return receiptRows;
     }
 
