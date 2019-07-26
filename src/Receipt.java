@@ -13,10 +13,9 @@ public class Receipt {
             taxesTotalAmount += good.taxAmount();
             totalReceiptAmount += good.taxedPrice();
         }
-        if (taxesTotalAmount > 0.0) {
-            receiptRows += "\n";
-            receiptRows += "Sales Taxes: " + PriceString.from(taxesTotalAmount) + "\n";
-        }
+        receiptRows += "\n";
+        receiptRows += new TaxesRow(taxesTotalAmount).get();
+
         if (totalReceiptAmount > 0.0) {
             receiptRows += "Total: " + PriceString.from(totalReceiptAmount);
         }
