@@ -12,8 +12,8 @@ public class Receipt {
 
     public String output() {
         String receiptRows = "";
-        TotalAmount totalAmount = new TotalAmount();
-        TotalAmount totalTaxes = new TotalAmount();
+        Total totalAmount = new Total();
+        Total totalTaxes = new Total();
 
         for (Good good : goods) {
             receiptRows += new ReceiptRow(good).get();

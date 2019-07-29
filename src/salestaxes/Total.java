@@ -1,6 +1,6 @@
 package salestaxes;
 
-public class TotalAmount {
+public class Total {
 
     private double amount = 0;
 
