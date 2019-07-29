@@ -12,18 +12,19 @@ public class Receipt {
 
     public String output() {
         String receiptRows = "";
-        double totalReceiptAmount = 0.0;
+        TotalAmount totalAmount = new TotalAmount();
+
         double taxesTotalAmount = 0.0;
 
         for (Good good : goods) {
             receiptRows += new ReceiptRow(good).get();
             taxesTotalAmount += good.taxAmount(); // TODO: should be totalTaxes.add(good.taxAmount())
-            totalReceiptAmount += good.taxedPrice();// TODO: should be totalAmount.add(good.taxedPrice())
+            totalAmount.add(good.taxedPrice());
         }
 
         receiptRows += new EmptyRow().get();
         receiptRows += new TaxesRow(taxesTotalAmount).get();
-        receiptRows += new TotalRow(totalReceiptAmount).get();
+        receiptRows += new TotalRow(totalAmount.get()).get();
 
         return receiptRows;
     }
