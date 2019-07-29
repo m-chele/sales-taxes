@@ -3,6 +3,7 @@ package salestaxes.test;
 import org.junit.Test;
 import salestaxes.Good;
 import salestaxes.Receipt;
+import salestaxes.Total;
 import salestaxes.taxes.Tax;
 
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class ReceiptTest {
                 new Good("good name", 10.0, NOT_INTERESTING_TAX),
                 new Good("good name", 10.0, NOT_INTERESTING_TAX)
         );
-        Receipt receipt = new Receipt(goods);
+        Receipt receipt = new Receipt(goods, new Total(), new Total());
 
         String output = receipt.output();
 
@@ -30,7 +31,7 @@ public class ReceiptTest {
 
     @Test
     public void empty_result_if_no_goods_added() {
-        Receipt receipt = new Receipt(Collections.emptyList());
+        Receipt receipt = new Receipt(Collections.emptyList(), new Total(), new Total());
 
         String output = receipt.output();
 

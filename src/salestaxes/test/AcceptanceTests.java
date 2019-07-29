@@ -3,6 +3,7 @@ package salestaxes.test;
 import org.junit.Test;
 import salestaxes.Good;
 import salestaxes.Receipt;
+import salestaxes.Total;
 import salestaxes.taxes.BasicSalesTax;
 import salestaxes.taxes.NoTax;
 
@@ -25,7 +26,7 @@ public class AcceptanceTests {
                 new Good("chocolate bar", 0.85, new NoTax())
         );
 
-        Receipt receipt = new Receipt(goods);
+        Receipt receipt = new Receipt(goods, new Total(), new Total());
 
         String output1 = "1 book at 12.49\n"
                 + "1 music CD at 16.49\n"
