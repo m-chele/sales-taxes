@@ -13,17 +13,16 @@ public class Receipt {
     public String output() {
         String receiptRows = "";
         TotalAmount totalAmount = new TotalAmount();
-
-        double taxesTotalAmount = 0.0;
+        TotalAmount totalTaxes = new TotalAmount();
 
         for (Good good : goods) {
             receiptRows += new ReceiptRow(good).get();
-            taxesTotalAmount += good.taxAmount(); // TODO: should be totalTaxes.add(good.taxAmount())
+            totalTaxes.add(good.taxAmount());
             totalAmount.add(good.taxedPrice());
         }
 
         receiptRows += new EmptyRow().get();
-        receiptRows += new TaxesRow(taxesTotalAmount).get();
+        receiptRows += new TaxesRow(totalTaxes.get()).get();
         receiptRows += new TotalRow(totalAmount.get()).get();
 
         return receiptRows;
