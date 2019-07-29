@@ -1,9 +1,9 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.BasicSalesTax;
+import salestaxes.taxes.BasicSalesTax;
 import salestaxes.Good;
-import salestaxes.ReceiptRow;
+import salestaxes.rows.ReceiptRow;
 
 import static junit.framework.TestCase.assertEquals;
 

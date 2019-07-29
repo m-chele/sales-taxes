@@ -1,4 +1,7 @@
-package salestaxes;
+package salestaxes.rows;
+
+import salestaxes.Good;
+import salestaxes.PriceString;
 
 public class ReceiptRow {
 

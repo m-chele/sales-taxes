@@ -1,5 +1,7 @@
 package salestaxes;
 
+import salestaxes.taxes.Tax;
+
 public class Good {
     private final String name;
     private final double price;

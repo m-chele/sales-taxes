@@ -1,5 +1,9 @@
 package salestaxes;
 
+import salestaxes.rows.ReceiptRow;
+import salestaxes.rows.TaxesRow;
+import salestaxes.rows.TotalRow;
+
 import java.util.ArrayList;
 import java.util.List;
 

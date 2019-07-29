@@ -1,4 +1,6 @@
-package salestaxes;
+package salestaxes.rows;
+
+import salestaxes.PriceString;
 
 public class TotalRow {
     private double totalAmount;

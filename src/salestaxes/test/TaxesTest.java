@@ -1,8 +1,8 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.BasicSalesTax;
-import salestaxes.NoTax;
+import salestaxes.taxes.BasicSalesTax;
+import salestaxes.taxes.NoTax;
 
 import static junit.framework.TestCase.assertEquals;
 
