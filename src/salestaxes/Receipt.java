@@ -18,19 +18,19 @@ public class Receipt {
     }
 
     public String output() {
-        String receiptRows = "";
+        String output = "";
 
         for (Good good : goods) {
-            receiptRows += new ReceiptRow(good).get();
+            output += new ReceiptRow(good).get();
             taxes.add(good.taxAmount());
             amount.add(good.taxedPrice());
         }
 
-        receiptRows += new EmptyRow().get();
-        receiptRows += new TaxesRow(taxes.get()).get();
-        receiptRows += new TotalRow(amount.get()).get();
+        output += new EmptyRow().get();
+        output += new TaxesRow(taxes.get()).get();
+        output += new TotalRow(amount.get()).get();
 
-        return receiptRows;
+        return output;
     }
 
 }
