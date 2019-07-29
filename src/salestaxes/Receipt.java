@@ -4,11 +4,14 @@ import salestaxes.rows.ReceiptRow;
 import salestaxes.rows.TaxesRow;
 import salestaxes.rows.TotalRow;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Receipt {
-    private List<Good> goods = new ArrayList();
+    private List<Good> goods;
+
+    public Receipt(List<Good> goods) {
+        this.goods = goods;
+    }
 
     public String output() {
         String receiptRows = "";
@@ -28,8 +31,4 @@ public class Receipt {
         return receiptRows;
     }
 
-    public void add(Good good) {
-
-        goods.add(good);
-    }
 }
