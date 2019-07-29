@@ -21,7 +21,7 @@ public class Receipt {
             totalReceiptAmount += good.taxedPrice();// TODO: should be totalAmount.add(good.taxedPrice())
         }
 
-        receiptRows += "\n"; // TODO: should be EmptyRow().get()
+        receiptRows += new EmptyRow().get();
         receiptRows += new TaxesRow(taxesTotalAmount).get();
         receiptRows += new TotalRow(totalReceiptAmount).get();
 
