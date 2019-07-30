@@ -15,7 +15,7 @@ public class ReceiptRowTest {
         Good aGood = new Good("good name", 10, tax);
         ReceiptRow receiptRow = new ReceiptRow(aGood);
 
-        assertEquals("1 good name at 11.00\n", receiptRow.get());
+        assertEquals("1 good name at 11.00\n", receiptRow.print());
     }
 
 }

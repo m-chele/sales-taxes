@@ -3,7 +3,7 @@ package salestaxes.rows;
 import salestaxes.Good;
 import salestaxes.PriceString;
 
-public class ReceiptRow {
+public class ReceiptRow implements Row {
 
     private Good good;
 
@@ -12,7 +12,7 @@ public class ReceiptRow {
         this.good = good;
     }
 
-    public String get() {
+    public String print() {
         return "1 "   // TODO: assumiamo che ci sia un solo articolo per tipo
                 + good.name()
                 + " at "

@@ -12,7 +12,7 @@ public class TotalRowTest {
     public void prints_a_total_amount_row() {
         TotalRow totalRow = new TotalRow(33.33);
 
-        assertEquals("Total: 33.33", totalRow.get());
+        assertEquals("Total: 33.33", totalRow.print());
 
     }
 

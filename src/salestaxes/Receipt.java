@@ -21,14 +21,14 @@ public class Receipt {
         String output = "";
 
         for (Good good : goods) {
-            output += new ReceiptRow(good).get();
+            output += new ReceiptRow(good).print();
             taxes.add(good.taxAmount());
             amount.add(good.taxedPrice());
         }
 
         output += new EmptyRow().get();
-        output += new TaxesRow(taxes.get()).get();
-        output += new TotalRow(amount.get()).get();
+        output += new TaxesRow(taxes.get()).print();
+        output += new TotalRow(amount.get()).print();
 
         return output;
     }
