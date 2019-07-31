@@ -4,6 +4,7 @@ import org.junit.Test;
 import salestaxes.Good;
 import salestaxes.GoodType;
 import salestaxes.Taxes;
+import salestaxes.taxes.BasicSalesTax;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -11,7 +12,7 @@ public class TaxesTest {
 
     @Test
     public void applies_a_single_tax() {
-        Taxes taxes = new Taxes();
+        Taxes taxes = new Taxes(new BasicSalesTax());
 
         Good good = new Good("something", 10.0, GoodType.OTHER);
 
