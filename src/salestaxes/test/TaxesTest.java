@@ -1,25 +1,20 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.taxes.BasicSalesTax;
-import salestaxes.taxes.NoTax;
+import salestaxes.Good;
+import salestaxes.GoodType;
+import salestaxes.Taxes;
 
 import static junit.framework.TestCase.assertEquals;
 
 public class TaxesTest {
 
     @Test
-    public void NoTax_does_not_change_the_price() {
-        NoTax tax = new NoTax();
+    public void applies_a_single_tax() {
+        Taxes taxes = new Taxes();
 
-        assertEquals(0.0, tax.taxValue(66.66));
+        Good good = new Good("something", 10.0, GoodType.OTHER);
+
+        assertEquals(1.0, taxes.calculateFor(good));
     }
-
-    @Test
-    public void BasicSalesTax_is_10_percent() {
-        BasicSalesTax tax = new BasicSalesTax();
-
-        assertEquals(10.00, tax.taxValue(100.00));
-    }
-
 }
