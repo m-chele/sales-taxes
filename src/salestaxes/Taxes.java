@@ -3,14 +3,19 @@ package salestaxes;
 import salestaxes.taxes.Tax;
 
 public class Taxes {
-    private Tax tax;
+    private Tax[] taxes;
 
-    public Taxes(Tax tax) {
+    public Taxes(Tax... taxes) {
 
-        this.tax = tax;
+        this.taxes = taxes;
     }
 
     public double calculateFor(Good good) {
-        return tax.taxValue(good.price());
+        double total = 0.0;
+
+        for(Tax tax : taxes) {
+            total += tax.taxValue(good.price());
+        }
+        return total;
     }
 }
