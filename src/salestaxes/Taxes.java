@@ -13,8 +13,10 @@ public class Taxes {
     public double calculateFor(Good good) {
         double total = 0.0;
 
-        for(Tax tax : taxes) {
-            total += tax.taxValue(good.price());
+        for (Tax tax : taxes) {
+            if (tax.appliesTo(good.type())) {
+                total += tax.taxValue(good.price());
+            }
         }
         return total;
     }

@@ -28,7 +28,16 @@ public class TaxesTest {
         assertEquals(3.0, taxes.calculateFor(good));
     }
 
-// TODO: refactor
+    @Test
+    public void applies_only_right_taxes() {
+        Taxes taxes = new Taxes(tax10, taxNotAppliable);
+
+        Good good = new Good("something", 10.0, GoodType.OTHER);
+
+        assertEquals(1.0, taxes.calculateFor(good));
+    }
+
+    // TODO: refactor
     private Tax tax10 = new Tax() {
         @Override
         public boolean appliesTo(GoodType goodType) {
@@ -50,6 +59,18 @@ public class TaxesTest {
         @Override
         public double taxValue(double price) {
             return price / 5;
+        }
+    };
+
+    private Tax taxNotAppliable = new Tax() {
+        @Override
+        public boolean appliesTo(GoodType goodType) {
+            return false;
+        }
+
+        @Override
+        public double taxValue(double price) {
+            return 666;
         }
     };
 }

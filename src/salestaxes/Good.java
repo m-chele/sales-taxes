@@ -39,4 +39,8 @@ public class Good {
     public double taxAmount() {
         return tax.taxValue(price);
     }
+
+    public GoodType type() {
+        return type;
+    }
 }
