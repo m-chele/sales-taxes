@@ -4,7 +4,7 @@ import org.junit.Test;
 import salestaxes.Good;
 import salestaxes.GoodType;
 import salestaxes.Taxes;
-import salestaxes.taxes.BasicSalesTax;
+import salestaxes.taxes.Tax;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -12,7 +12,10 @@ public class TaxesTest {
 
     @Test
     public void applies_a_single_tax() {
-        Taxes taxes = new Taxes(new BasicSalesTax());
+
+        Tax tax10 = price -> price / 10;
+
+        Taxes taxes = new Taxes(tax10);
 
         Good good = new Good("something", 10.0, GoodType.OTHER);
 
