@@ -37,31 +37,22 @@ public class TaxesTest {
         assertEquals(1.0, taxes.calculateFor(good));
     }
 
-    // TODO: refactor
-    private Tax tax10 = new Tax() {
-        @Override
-        public boolean appliesTo(GoodType goodType) {
-            return true;
-        }
+    private Tax taxWithPercentage(int percentage) {
+        return new Tax() {
+            @Override
+            public boolean appliesTo(GoodType goodType) {
+                return true;
+            }
 
-        @Override
-        public double taxValue(double price) {
-            return price / 10;
-        }
-    };
+            @Override
+            public double taxValue(double price) {
+                return price / (100 / percentage);
+            }
+        };
+    }
 
-    private Tax tax20 = new Tax() {
-        @Override
-        public boolean appliesTo(GoodType goodType) {
-            return true;
-        }
-
-        @Override
-        public double taxValue(double price) {
-            return price / 5;
-        }
-    };
-
+    private Tax tax10 = taxWithPercentage(10);
+    private Tax tax20 = taxWithPercentage(20);
     private Tax taxNotAppliable = new Tax() {
         @Override
         public boolean appliesTo(GoodType goodType) {
