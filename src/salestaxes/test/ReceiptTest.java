@@ -1,7 +1,10 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.*;
+import salestaxes.Good;
+import salestaxes.GoodType;
+import salestaxes.Receipt;
+import salestaxes.Taxes;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,7 +21,7 @@ public class ReceiptTest {
                 new Good("good name", 10.0, GoodType.OTHER)
         );
         Taxes taxes = new Taxes();
-        Receipt receipt = new Receipt(goods, new Total(), new Total(), taxes);
+        Receipt receipt = new Receipt(goods, taxes);
 
         String output = receipt.output();
 
@@ -27,7 +30,7 @@ public class ReceiptTest {
 
     @Test
     public void empty_result_if_no_goods_added() {
-        Receipt receipt = new Receipt(Collections.emptyList(), new Total(), new Total(), null);
+        Receipt receipt = new Receipt(Collections.emptyList(), null);
 
         String output = receipt.output();
 
