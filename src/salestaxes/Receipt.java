@@ -25,9 +25,10 @@ public class Receipt {
         for (Good good : goods) {
             double taxAmount = taxes.calculateFor(good);
             totalTaxAmount.add(taxAmount);
-            this.amount.add(good.price() + taxAmount);
+            double totalPrice = good.price() + taxAmount;
+            this.amount.add(totalPrice);
 
-            output += new ReceiptRow(good.name(), good.price() + taxAmount).print();
+            output += new ReceiptRow(good.name(), totalPrice).print();
         }
 
         output += new EmptyRow().get();
