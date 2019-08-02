@@ -1,10 +1,7 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.Good;
-import salestaxes.Receipt;
-import salestaxes.Total;
-import salestaxes.taxes.Tax;
+import salestaxes.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,15 +11,14 @@ import static junit.framework.TestCase.assertEquals;
 
 public class ReceiptTest {
 
-    private Tax NOT_INTERESTING_TAX = price -> 0;
-
     @Test
     public void one_row_for_each_good() {
         List<Good> goods = Arrays.asList(
-                new Good("good name", 10.0, NOT_INTERESTING_TAX),
-                new Good("good name", 10.0, NOT_INTERESTING_TAX)
+                new Good("good name", 10.0, GoodType.OTHER),
+                new Good("good name", 10.0, GoodType.OTHER)
         );
-        Receipt receipt = new Receipt(goods, new Total(), new Total());
+        Taxes taxes = new Taxes();
+        Receipt receipt = new Receipt(goods, new Total(), new Total(), taxes);
 
         String output = receipt.output();
 
@@ -31,7 +27,7 @@ public class ReceiptTest {
 
     @Test
     public void empty_result_if_no_goods_added() {
-        Receipt receipt = new Receipt(Collections.emptyList(), new Total(), new Total());
+        Receipt receipt = new Receipt(Collections.emptyList(), new Total(), new Total(), null);
 
         String output = receipt.output();
 

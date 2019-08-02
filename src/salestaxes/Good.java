@@ -10,14 +10,6 @@ public class Good {
 
     private Tax tax;
 
-    // TODO: remove
-    public Good(String name, double price, Tax tax) {
-
-        this.name = name;
-        this.price = price;
-        this.tax = tax;
-    }
-
     public Good(String name, double price, GoodType type) {
         this.name = name;
         this.price = price;
@@ -30,14 +22,6 @@ public class Good {
 
     public double price() {
         return price;
-    }
-
-    public double taxedPrice() {
-        return price + tax.taxValue(price);
-    }
-
-    public double taxAmount() {
-        return tax.taxValue(price);
     }
 
     public GoodType type() {

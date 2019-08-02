@@ -1,10 +1,9 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.Good;
-import salestaxes.Receipt;
-import salestaxes.Total;
+import salestaxes.*;
 import salestaxes.taxes.BasicSalesTax;
+import salestaxes.taxes.ImportTax;
 import salestaxes.taxes.NoTax;
 
 import java.util.Arrays;
@@ -21,12 +20,13 @@ public class AcceptanceTests {
 //        1 music CD at 14.99
 //        1 chocolate bar at 0.85
         List<Good> goods = Arrays.asList(
-                new Good("book", 12.49, new NoTax()),
-                new Good("music CD", 14.99, new BasicSalesTax()),
-                new Good("chocolate bar", 0.85, new NoTax())
+                new Good("book", 12.49, GoodType.BOOK),
+                new Good("music CD", 14.99, GoodType.OTHER),
+                new Good("chocolate bar", 0.85, GoodType.FOOD)
         );
 
-        Receipt receipt = new Receipt(goods, new Total(), new Total());
+        Taxes taxes = new Taxes(new BasicSalesTax(), new ImportTax(), new NoTax());
+        Receipt receipt = new Receipt(goods, new Total(), new Total(), taxes);
 
         String output1 = "1 book at 12.49\n"
                 + "1 music CD at 16.49\n"
