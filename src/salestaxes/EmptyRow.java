@@ -1,8 +1,11 @@
 package salestaxes;
 
-public class EmptyRow {
+import salestaxes.rows.Row;
 
-    public String get() {
+public class EmptyRow implements Row {
+
+    @Override
+    public String print() {
         return "\n";
     }
 }

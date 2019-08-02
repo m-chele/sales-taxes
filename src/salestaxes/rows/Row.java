@@ -1,5 +1,5 @@
 package salestaxes.rows;
 
-interface Row {
+public interface Row {
     String print();
 }

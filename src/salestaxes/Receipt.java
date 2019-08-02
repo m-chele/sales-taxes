@@ -1,9 +1,11 @@
 package salestaxes;
 
 import salestaxes.rows.ReceiptRow;
+import salestaxes.rows.Row;
 import salestaxes.rows.TaxesRow;
 import salestaxes.rows.TotalRow;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Receipt {
@@ -20,6 +22,8 @@ public class Receipt {
     }
 
     public String output() {
+        List<Row> receiptRows = new ArrayList<>();
+
         String output = "";
 
         for (Good good : goods) {
@@ -28,12 +32,16 @@ public class Receipt {
             double totalPrice = good.price() + taxAmount;
             this.totalPrice.add(totalPrice);
 
-            output += new ReceiptRow(good.name(), totalPrice).print();
+            receiptRows.add(new ReceiptRow(good.name(), totalPrice));
         }
 
-        output += new EmptyRow().get();
-        output += new TaxesRow(totalTax.get()).print();
-        output += new TotalRow(totalPrice.get()).print();
+        receiptRows.add(new EmptyRow());
+        receiptRows.add(new TaxesRow(totalTax.get()));
+        receiptRows.add(new TotalRow(totalPrice.get()));
+
+        for (Row row : receiptRows) {
+            output += row.print();
+        }
 
         return output;
     }

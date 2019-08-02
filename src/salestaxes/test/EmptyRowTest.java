@@ -11,7 +11,7 @@ public class EmptyRowTest {
     public void prints_an_empty_row() {
         EmptyRow emptyRow = new EmptyRow();
 
-        assertEquals("\n", emptyRow.get());
+        assertEquals("\n", emptyRow.print());
     }
 
 }
