@@ -38,7 +38,7 @@ public class AcceptanceTests {
                 + "Sales Taxes: 1.50\n"
                 + "Total: 29.83";
 
-        assertEquals(output1, receipt.output());
+        assertEquals(output1, receipt.print());
     }
 
     //    Input 2:

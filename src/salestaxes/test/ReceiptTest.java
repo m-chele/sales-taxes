@@ -23,7 +23,7 @@ public class ReceiptTest {
         Taxes taxes = new Taxes();
         Receipt receipt = new Receipt(goods, taxes);
 
-        String output = receipt.output();
+        String output = receipt.print();
 
         assertEquals("1 good name at 10.00\n1 good name at 10.00\n\nTotal: 20.00", output);
     }
@@ -32,7 +32,7 @@ public class ReceiptTest {
     public void empty_result_if_no_goods_added() {
         Receipt receipt = new Receipt(Collections.emptyList(), null);
 
-        String output = receipt.output();
+        String output = receipt.print();
 
         assertEquals("\n", output);
     }
