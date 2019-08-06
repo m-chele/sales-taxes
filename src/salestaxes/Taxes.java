@@ -15,14 +15,10 @@ public class Taxes {
 
         for (Tax tax : taxes) {
             if (tax.appliesTo(good.types())) {
-                total += customRound(tax.taxValue(good.price()));
+                total += new Round005().round(tax.taxValue(good.price()));
             }
         }
         return total;
     }
 
-    // TODO: refactor name and position
-    private double customRound(double num) {
-        return Math.round(num * 20) / 20.0;
-    }
 }
