@@ -4,9 +4,10 @@ import salestaxes.taxes.Tax;
 
 public class Taxes {
     private Tax[] taxes;
+    private Round round;
 
-    public Taxes(Tax... taxes) {
-
+    public Taxes(Round round, Tax... taxes) {
+        this.round = round;
         this.taxes = taxes;
     }
 
@@ -15,7 +16,7 @@ public class Taxes {
 
         for (Tax tax : taxes) {
             if (tax.appliesTo(good.types())) {
-                total += new Round005().round(tax.taxValue(good.price()));
+                total += round.round(tax.taxValue(good.price()));
             }
         }
         return total;

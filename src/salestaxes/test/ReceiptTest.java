@@ -1,10 +1,7 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.Good;
-import salestaxes.GoodType;
-import salestaxes.Receipt;
-import salestaxes.Taxes;
+import salestaxes.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,7 +17,7 @@ public class ReceiptTest {
                 new Good("good name", 10.0, GoodType.OTHER),
                 new Good("good name", 10.0, GoodType.OTHER)
         );
-        Taxes taxes = new Taxes();
+        Taxes taxes = new Taxes(new Round());
         Receipt receipt = new Receipt(goods, taxes);
 
         String output = receipt.print();

@@ -3,6 +3,7 @@ package salestaxes.test;
 import org.junit.Test;
 import salestaxes.Good;
 import salestaxes.GoodType;
+import salestaxes.Round;
 import salestaxes.Taxes;
 import salestaxes.taxes.Tax;
 
@@ -12,9 +13,11 @@ import static junit.framework.TestCase.assertEquals;
 
 public class TaxesTest {
 
+    Round round =  new Round();
+
     @Test
     public void applies_a_single_tax() {
-        Taxes taxes = new Taxes(tax10);
+        Taxes taxes = new Taxes(round, tax10);
 
         Good good = new Good("something", 10.0, GoodType.OTHER);
 
@@ -23,7 +26,7 @@ public class TaxesTest {
 
     @Test
     public void applies_multiple_taxes() {
-        Taxes taxes = new Taxes(tax10, tax20);
+        Taxes taxes = new Taxes(round, tax10, tax20);
 
         Good good = new Good("something", 10.0, GoodType.OTHER);
 
@@ -32,7 +35,7 @@ public class TaxesTest {
 
     @Test
     public void applies_only_right_taxes() {
-        Taxes taxes = new Taxes(tax10, taxNotAppliable);
+        Taxes taxes = new Taxes(round, tax10, taxNotAppliable);
 
         Good good = new Good("something", 10.0, GoodType.OTHER);
 

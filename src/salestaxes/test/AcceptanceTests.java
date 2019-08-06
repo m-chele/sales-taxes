@@ -1,10 +1,7 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.Good;
-import salestaxes.GoodType;
-import salestaxes.Receipt;
-import salestaxes.Taxes;
+import salestaxes.*;
 import salestaxes.taxes.BasicSalesTax;
 import salestaxes.taxes.ImportTax;
 import salestaxes.taxes.NoTax;
@@ -30,7 +27,7 @@ public class AcceptanceTests {
                 new Good("imported box of chocolates", 10.00, GoodType.IMPORTED, GoodType.FOOD),
                 new Good("imported bottle of perfume", 47.50, GoodType.OTHER, GoodType.IMPORTED)
         );
-        Taxes taxes = new Taxes(new BasicSalesTax(), new ImportTax(), new NoTax());
+        Taxes taxes = new Taxes(new Round(), new BasicSalesTax(), new ImportTax(), new NoTax());
         Receipt receipt = new Receipt(goods, taxes);
 
         String output1 = "1 imported box of chocolates at 10.50\n"
@@ -56,7 +53,7 @@ public class AcceptanceTests {
                 new Good("chocolate bar", 0.85, GoodType.FOOD)
         );
 
-        Taxes taxes = new Taxes(new BasicSalesTax(), new ImportTax(), new NoTax());
+        Taxes taxes = new Taxes(new Round(), new BasicSalesTax(), new ImportTax(), new NoTax());
         Receipt receipt = new Receipt(goods, taxes);
 
         String output1 = "1 book at 12.49\n"
