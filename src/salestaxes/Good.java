@@ -1,19 +1,18 @@
 package salestaxes;
 
-import salestaxes.taxes.Tax;
+import java.util.Arrays;
+import java.util.List;
 
 public class Good {
     private final String name;
     private final double price;
-    private GoodType type;
+    private List<GoodType> types;
 
 
-    private Tax tax;
-
-    public Good(String name, double price, GoodType type) {
+    public Good(String name, double price, GoodType... types) {
         this.name = name;
         this.price = price;
-        this.type = type;
+        this.types = Arrays.asList(types);
     }
 
     public String name() {
@@ -24,7 +23,7 @@ public class Good {
         return price;
     }
 
-    public GoodType type() {
-        return type;
+    public List<GoodType> types() {
+        return types;
     }
 }

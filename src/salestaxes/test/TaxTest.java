@@ -6,6 +6,8 @@ import salestaxes.taxes.BasicSalesTax;
 import salestaxes.taxes.ImportTax;
 import salestaxes.taxes.NoTax;
 
+import java.util.Collections;
+
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -16,21 +18,21 @@ public class TaxTest { // TODO: refactor, extract in single test file
     public void NoTax_applied_to_book() {
         NoTax tax = new NoTax();
 
-        assertTrue(tax.appliesTo(GoodType.BOOK));
+        assertTrue(tax.appliesTo(Collections.singletonList(GoodType.BOOK)));
     }
 
     @Test
     public void NoTax_applied_to_food() {
         NoTax tax = new NoTax();
 
-        assertTrue(tax.appliesTo(GoodType.FOOD));
+        assertTrue(tax.appliesTo(Collections.singletonList(GoodType.FOOD)));
     }
 
     @Test
     public void NoTax_applied_to_medical() {
         NoTax tax = new NoTax();
 
-        assertTrue(tax.appliesTo(GoodType.MEDICAL));
+        assertTrue(tax.appliesTo(Collections.singletonList(GoodType.MEDICAL)));
     }
 
     @Test
@@ -52,11 +54,11 @@ public class TaxTest { // TODO: refactor, extract in single test file
     public void BasicSalesTax_applies_to_others() {
         BasicSalesTax tax = new BasicSalesTax();
 
-        assertTrue(tax.appliesTo(GoodType.OTHER));
+        assertTrue(tax.appliesTo(Collections.singletonList(GoodType.OTHER)));
         // TODO: not sure this worth
-        assertFalse(tax.appliesTo(GoodType.BOOK));
-        assertFalse(tax.appliesTo(GoodType.FOOD));
-        assertFalse(tax.appliesTo(GoodType.MEDICAL));
+        assertFalse(tax.appliesTo(Collections.singletonList(GoodType.BOOK)));
+        assertFalse(tax.appliesTo(Collections.singletonList(GoodType.FOOD)));
+        assertFalse(tax.appliesTo(Collections.singletonList(GoodType.MEDICAL)));
     }
 
 
@@ -64,7 +66,7 @@ public class TaxTest { // TODO: refactor, extract in single test file
     public void ImportTax_applies_to_imported() {
         ImportTax tax = new ImportTax();
 
-        assertTrue(tax.appliesTo(GoodType.IMPORTED));
+        assertTrue(tax.appliesTo(Collections.singletonList(GoodType.IMPORTED)));
     }
 
     @Test

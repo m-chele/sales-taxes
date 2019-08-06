@@ -2,13 +2,15 @@ package salestaxes.taxes;
 
 import salestaxes.GoodType;
 
+import java.util.List;
+
 public class NoTax implements Tax {
 
     @Override
-    public boolean appliesTo(GoodType goodType) {
-        return GoodType.BOOK.equals(goodType) ||
-                GoodType.FOOD.equals(goodType) ||
-                GoodType.MEDICAL.equals(goodType);
+    public boolean appliesTo(List<GoodType> goodTypes) {
+        return goodTypes.contains(GoodType.BOOK) ||
+                goodTypes.contains(GoodType.FOOD) ||
+                goodTypes.contains(GoodType.MEDICAL);
     }
 
     @Override

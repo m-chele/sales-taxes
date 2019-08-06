@@ -4,6 +4,9 @@ import org.junit.Test;
 import salestaxes.Good;
 import salestaxes.GoodType;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import static junit.framework.TestCase.assertEquals;
 
 public class GoodTest {
@@ -23,10 +26,17 @@ public class GoodTest {
     }
 
     @Test
-    public void type_is_passed_as_argument() {
+    public void types_are_a_list() {
         Good good = new Good("good name", 10.0, GoodType.OTHER);
 
-        assertEquals(GoodType.OTHER, good.type());
+        assertEquals(Collections.singletonList(GoodType.OTHER), good.types());
+    }
+
+    @Test
+    public void one_element_for_each_passed_type() {
+        Good good = new Good("good name", 10.0, GoodType.OTHER, GoodType.BOOK);
+
+        assertEquals(Arrays.asList(GoodType.OTHER, GoodType.BOOK), good.types());
     }
 
 }

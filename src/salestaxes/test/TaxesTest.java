@@ -6,6 +6,8 @@ import salestaxes.GoodType;
 import salestaxes.Taxes;
 import salestaxes.taxes.Tax;
 
+import java.util.List;
+
 import static junit.framework.TestCase.assertEquals;
 
 public class TaxesTest {
@@ -40,7 +42,7 @@ public class TaxesTest {
     private Tax taxWithPercentage(int percentage) {
         return new Tax() {
             @Override
-            public boolean appliesTo(GoodType goodType) {
+            public boolean appliesTo(List<GoodType> goodTypes) {
                 return true;
             }
 
@@ -55,7 +57,7 @@ public class TaxesTest {
     private Tax tax20 = taxWithPercentage(20);
     private Tax taxNotAppliable = new Tax() {
         @Override
-        public boolean appliesTo(GoodType goodType) {
+        public boolean appliesTo(List<GoodType> goodTypes) {
             return false;
         }
 

@@ -2,10 +2,12 @@ package salestaxes.taxes;
 
 import salestaxes.GoodType;
 
+import java.util.List;
+
 public class BasicSalesTax implements Tax {
 
-    public boolean appliesTo(GoodType goodType) {
-        return GoodType.OTHER.equals(goodType);
+    public boolean appliesTo(List<GoodType> goodTypes) {
+        return goodTypes.contains(GoodType.OTHER);
     }
 
     public double taxValue(double price) {

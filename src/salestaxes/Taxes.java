@@ -14,7 +14,7 @@ public class Taxes {
         double total = 0.0;
 
         for (Tax tax : taxes) {
-            if (tax.appliesTo(good.type())) {
+            if (tax.appliesTo(good.types())) {
                 total += customRound(tax.taxValue(good.price()));
             }
         }
