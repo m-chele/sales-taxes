@@ -1,4 +1,4 @@
-package salestaxes;
+package salestaxes.goods;
 
 import java.util.Arrays;
 import java.util.List;

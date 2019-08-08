@@ -2,7 +2,7 @@ package salestaxes.test;
 
 
 import org.junit.Test;
-import salestaxes.Round;
+import salestaxes.taxes.Round;
 
 import static junit.framework.TestCase.assertEquals;
 

@@ -1,7 +1,7 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.PriceString;
+import salestaxes.rows.PriceString;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,6 +1,6 @@
-package salestaxes;
+package salestaxes.taxes;
 
-import salestaxes.taxes.Tax;
+import salestaxes.goods.Good;
 
 public class Taxes {
     private Tax[] taxes;

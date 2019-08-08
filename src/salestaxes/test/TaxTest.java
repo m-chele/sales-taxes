@@ -1,7 +1,7 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.GoodType;
+import salestaxes.goods.GoodType;
 import salestaxes.taxes.BasicSalesTax;
 import salestaxes.taxes.ImportTax;
 import salestaxes.taxes.NoTax;

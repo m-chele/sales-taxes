@@ -1,9 +1,8 @@
 package salestaxes;
 
-import salestaxes.rows.ReceiptRow;
-import salestaxes.rows.Row;
-import salestaxes.rows.TaxesRow;
-import salestaxes.rows.TotalRow;
+import salestaxes.goods.Good;
+import salestaxes.rows.*;
+import salestaxes.taxes.Taxes;
 
 import java.util.ArrayList;
 import java.util.List;

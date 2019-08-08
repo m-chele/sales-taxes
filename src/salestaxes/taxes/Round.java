@@ -1,4 +1,4 @@
-package salestaxes;
+package salestaxes.taxes;
 
 
 public class Round {

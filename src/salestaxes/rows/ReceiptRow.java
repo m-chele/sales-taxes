@@ -1,7 +1,5 @@
 package salestaxes.rows;
 
-import salestaxes.PriceString;
-
 public class ReceiptRow implements Row {
 
     private final String goodName;

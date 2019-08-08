@@ -1,7 +1,5 @@
 package salestaxes.rows;
 
-import salestaxes.PriceString;
-
 public class TaxesRow implements Row {
     private double taxesAmount;
 

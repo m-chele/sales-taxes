@@ -1,4 +1,4 @@
-package salestaxes;
+package salestaxes.rows;
 
 public class PriceString {
 

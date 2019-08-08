@@ -1,7 +1,11 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.*;
+import salestaxes.Receipt;
+import salestaxes.goods.Good;
+import salestaxes.goods.GoodType;
+import salestaxes.taxes.Round;
+import salestaxes.taxes.Taxes;
 
 import java.util.Arrays;
 import java.util.Collections;

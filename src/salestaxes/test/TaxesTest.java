@@ -1,11 +1,11 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.Good;
-import salestaxes.GoodType;
-import salestaxes.Round;
-import salestaxes.Taxes;
+import salestaxes.goods.Good;
+import salestaxes.goods.GoodType;
+import salestaxes.taxes.Round;
 import salestaxes.taxes.Tax;
+import salestaxes.taxes.Taxes;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class TaxesTest {
 
-    Round round =  new Round();
+    Round round = new Round();
 
     @Test
     public void applies_a_single_tax() {

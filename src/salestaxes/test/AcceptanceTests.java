@@ -1,10 +1,10 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.*;
-import salestaxes.taxes.BasicSalesTax;
-import salestaxes.taxes.ImportTax;
-import salestaxes.taxes.NoTax;
+import salestaxes.Receipt;
+import salestaxes.goods.Good;
+import salestaxes.goods.GoodType;
+import salestaxes.taxes.*;
 
 import java.util.Arrays;
 import java.util.List;

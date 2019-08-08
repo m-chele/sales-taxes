@@ -1,7 +1,7 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.EmptyRow;
+import salestaxes.rows.EmptyRow;
 
 import static junit.framework.TestCase.assertEquals;
 

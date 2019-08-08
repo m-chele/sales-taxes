@@ -1,8 +1,8 @@
 package salestaxes.test;
 
 import org.junit.Test;
-import salestaxes.Good;
-import salestaxes.GoodType;
+import salestaxes.goods.Good;
+import salestaxes.goods.GoodType;
 
 import java.util.Arrays;
 import java.util.Collections;

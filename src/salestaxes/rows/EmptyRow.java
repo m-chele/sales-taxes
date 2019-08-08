@@ -1,6 +1,4 @@
-package salestaxes;
-
-import salestaxes.rows.Row;
+package salestaxes.rows;
 
 public class EmptyRow implements Row {
 

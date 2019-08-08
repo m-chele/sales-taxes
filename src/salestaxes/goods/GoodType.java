@@ -1,4 +1,4 @@
-package salestaxes;
+package salestaxes.goods;
 
 public enum GoodType {
     OTHER,

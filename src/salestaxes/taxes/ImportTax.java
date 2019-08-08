@@ -1,6 +1,6 @@
 package salestaxes.taxes;
 
-import salestaxes.GoodType;
+import salestaxes.goods.GoodType;
 
 import java.util.List;
 
