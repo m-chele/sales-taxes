@@ -9,16 +9,16 @@ import java.util.List;
 
 public class Receipt {
     private List<Good> goods;
-    private final Total totalPrice;
-    private final Total totalTax;
+    private double totalPrice;
+    private double totalTax;
     private Taxes taxes;
     private List<Row> receiptRows;
 
     public Receipt(List<Good> goods, Taxes taxes) {
         this.goods = goods;
         this.taxes = taxes;
-        this.totalPrice = new Total();
-        this.totalTax = new Total();
+        this.totalPrice = 0.0;
+        this.totalTax = 0.0;
         this.receiptRows = new ArrayList<>();
     }
 
@@ -38,15 +38,15 @@ public class Receipt {
 
     private void generate() {
         for (Good good : goods) {
-            totalTax.add(taxes.calculateFor(good));
-            totalPrice.add(totalPriceFor(good));
+            totalTax += taxes.calculateFor(good);
+            totalPrice += totalPriceFor(good);
 
             receiptRows.add(new ReceiptRow(good.name(), totalPriceFor(good)));
         }
 
         receiptRows.add(new EmptyRow());
-        receiptRows.add(new TaxesRow(totalTax.get()));
-        receiptRows.add(new TotalRow(totalPrice.get()));
+        receiptRows.add(new TaxesRow(totalTax));
+        receiptRows.add(new TotalRow(totalPrice));
     }
 
     private double totalPriceFor(Good good) {
