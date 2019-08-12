@@ -1,6 +1,7 @@
 package salestaxes.test;
 
 import org.junit.Test;
+import salestaxes.Display;
 import salestaxes.Receipt;
 import salestaxes.goods.Good;
 import salestaxes.goods.GoodType;
@@ -14,6 +15,7 @@ import java.util.List;
 import static junit.framework.TestCase.assertEquals;
 
 public class ReceiptTest {
+    String shownText = null;
 
     @Test
     public void one_row_for_each_good() {
@@ -22,20 +24,23 @@ public class ReceiptTest {
                 new Good("good name", 10.0, GoodType.OTHER)
         );
         Taxes taxes = new Taxes(new Round());
-        Receipt receipt = new Receipt(goods, taxes);
+        Display testDisplay = text -> shownText = text;
 
-        String output = receipt.print();
+        Receipt receipt = new Receipt(goods, taxes, testDisplay);
 
-        assertEquals("1 good name at 10.00\n1 good name at 10.00\n\nTotal: 20.00", output);
+        receipt.complete();
+
+        assertEquals("1 good name at 10.00\n1 good name at 10.00\n\nTotal: 20.00", shownText);
+
     }
 
     @Test
     public void empty_result_if_no_goods_added() {
-        Receipt receipt = new Receipt(Collections.emptyList(), null);
+        Display testDisplay = text -> shownText = text;
+        Receipt receipt = new Receipt(Collections.emptyList(), null, testDisplay);
+        receipt.complete();
 
-        String output = receipt.print();
-
-        assertEquals("\n", output);
+        assertEquals("\n", shownText);
     }
 
 

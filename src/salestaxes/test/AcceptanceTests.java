@@ -13,7 +13,9 @@ import static junit.framework.TestCase.assertEquals;
 
 public class AcceptanceTests {
 
-//    Input 3:
+    private StringDisplay stringDisplay = new StringDisplay();
+
+    //    Input 3:
 //            1 imported bottle of perfume at 27.99
 //            1 bottle of perfume at 18.99
 //            1 packet of headache pills at 9.75
@@ -35,8 +37,8 @@ public class AcceptanceTests {
                 new Good("packet of headache pills", 9.75, GoodType.MEDICAL),
                 new Good("imported box of chocolates", 11.25, GoodType.FOOD, GoodType.IMPORTED)
         );
-        Taxes taxes = new Taxes(new Round(), new BasicSalesTax(), new ImportTax(), new NoTax());
-        Receipt receipt = new Receipt(goods, taxes);
+
+        testReceipt(goods).complete();
 
         String output1 = "1 imported bottle of perfume at 32.19\n"
                 + "1 bottle of perfume at 20.89\n"
@@ -46,7 +48,7 @@ public class AcceptanceTests {
                 + "Sales Taxes: 6.70\n"
                 + "Total: 74.68";
 
-        assertEquals(output1, receipt.print());
+        assertEquals(output1, stringDisplay.getText());
     }
 
 
@@ -65,8 +67,8 @@ public class AcceptanceTests {
                 new Good("imported box of chocolates", 10.00, GoodType.IMPORTED, GoodType.FOOD),
                 new Good("imported bottle of perfume", 47.50, GoodType.OTHER, GoodType.IMPORTED)
         );
-        Taxes taxes = new Taxes(new Round(), new BasicSalesTax(), new ImportTax(), new NoTax());
-        Receipt receipt = new Receipt(goods, taxes);
+
+        testReceipt(goods).complete();
 
         String output1 = "1 imported box of chocolates at 10.50\n"
                 + "1 imported bottle of perfume at 54.65\n"
@@ -74,8 +76,7 @@ public class AcceptanceTests {
                 + "Sales Taxes: 7.65\n"
                 + "Total: 65.15";
 
-        assertEquals(output1, receipt.print());
-
+        assertEquals(output1, stringDisplay.getText());
     }
 
 
@@ -91,8 +92,7 @@ public class AcceptanceTests {
                 new Good("chocolate bar", 0.85, GoodType.FOOD)
         );
 
-        Taxes taxes = new Taxes(new Round(), new BasicSalesTax(), new ImportTax(), new NoTax());
-        Receipt receipt = new Receipt(goods, taxes);
+        testReceipt(goods).complete();
 
         String output1 = "1 book at 12.49\n"
                 + "1 music CD at 16.49\n"
@@ -101,6 +101,11 @@ public class AcceptanceTests {
                 + "Sales Taxes: 1.50\n"
                 + "Total: 29.83";
 
-        assertEquals(output1, receipt.print());
+        assertEquals(output1, stringDisplay.getText());
+    }
+
+    private Receipt testReceipt(List<Good> goods) {
+        Taxes taxes = new Taxes(new Round(), new BasicSalesTax(), new ImportTax(), new NoTax());
+        return new Receipt(goods, taxes, stringDisplay);
     }
 }

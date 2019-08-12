@@ -12,20 +12,22 @@ public class Receipt {
     private double totalPrice;
     private double totalTax;
     private Taxes taxes;
+    private Display display;
     private List<Row> receiptRows;
 
-    public Receipt(List<Good> goods, Taxes taxes) {
+    public Receipt(List<Good> goods, Taxes taxes, Display display) {
         this.goods = goods;
         this.taxes = taxes;
+        this.display = display;
         this.totalPrice = 0.0;
         this.totalTax = 0.0;
         this.receiptRows = new ArrayList<>();
     }
 
-    public String print() {
+    public void complete() {
         generate();
 
-        return output();
+        display.showText(output());
     }
 
     private String output() {
