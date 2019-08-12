@@ -4,6 +4,7 @@ about 11 hours working 1 hour a day (with a two weeks pause for holidays ;) )
 # My assumptions
 * parsing input is out of scope
 * one row for each good (i.e "2 books at ..." is not allowed)
+* using double for money representation is ok
 
 
 # Difficulties I encountered
