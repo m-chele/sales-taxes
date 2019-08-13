@@ -1,11 +1,11 @@
 package salestaxes.rows;
 
-public class ReceiptRow implements Row {
+public class GoodRow implements Row {
 
     private final String goodName;
     private final double totalPrice;
 
-    public ReceiptRow(String goodName, double totalPrice) {
+    public GoodRow(String goodName, double totalPrice) {
 
         this.goodName = goodName;
         this.totalPrice = totalPrice;

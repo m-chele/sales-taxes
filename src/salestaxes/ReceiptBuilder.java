@@ -1,7 +1,7 @@
 package salestaxes;
 
 import salestaxes.goods.Good;
-import salestaxes.rows.ReceiptRow;
+import salestaxes.rows.GoodRow;
 import salestaxes.rows.Row;
 import salestaxes.rows.TaxesRow;
 import salestaxes.rows.TotalRow;
@@ -47,7 +47,7 @@ public class ReceiptBuilder {
     }
 
     private void addNewRow(Good good) {
-        receiptRows.add(new ReceiptRow(good.name(), totalPriceFor(good)));
+        receiptRows.add(new GoodRow(good.name(), totalPriceFor(good)));
     }
 
     private void incrementTotalPrice(Good good) {
