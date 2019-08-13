@@ -11,7 +11,7 @@ public class TaxesRowTest {
     public void prints_a_tax_row_for_a_good() {
         TaxesRow taxesRow = new TaxesRow(33.00);
 
-        assertEquals("Sales Taxes: 33.00\n", taxesRow.print());
+        assertEquals("\nSales Taxes: 33.00", taxesRow.print());
     }
 
 }

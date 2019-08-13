@@ -35,7 +35,7 @@ public class ReceiptBuilderTest {
         receiptBuilder
                 .emit();
 
-        assertEquals("\n", testDisplay.getText());
+        assertEquals("", testDisplay.getText());
     }
 
 

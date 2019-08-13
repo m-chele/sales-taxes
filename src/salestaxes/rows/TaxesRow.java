@@ -9,7 +9,7 @@ public class TaxesRow implements Row {
 
     public String print() {
         if (taxesAmount > 0.0) {
-            return "Sales Taxes: " + PriceString.from(taxesAmount) + "\n";
+            return "\nSales Taxes: " + PriceString.from(taxesAmount);
         }
         return "";
     }

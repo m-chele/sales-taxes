@@ -9,7 +9,7 @@ public class TotalRow implements Row {
 
     public String print() {
         if (totalAmount > 0.0) {
-            return "Total: " + PriceString.from(totalAmount);
+            return "\nTotal: " + PriceString.from(totalAmount);
         }
         return "";
     }

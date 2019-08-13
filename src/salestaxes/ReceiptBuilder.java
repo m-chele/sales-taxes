@@ -1,7 +1,10 @@
 package salestaxes;
 
 import salestaxes.goods.Good;
-import salestaxes.rows.*;
+import salestaxes.rows.ReceiptRow;
+import salestaxes.rows.Row;
+import salestaxes.rows.TaxesRow;
+import salestaxes.rows.TotalRow;
 import salestaxes.taxes.Taxes;
 
 import java.util.ArrayList;
@@ -21,20 +24,38 @@ public class ReceiptBuilder {
     }
 
     public void emit() {
-        receiptRows.add(new EmptyRow());
-        receiptRows.add(new TaxesRow(totalTax));
-        receiptRows.add(new TotalRow(totalPrice));
+        addTotalTaxesRow();
+        addTotalPriceRow();
 
         display.show(receiptRows);
     }
 
-    public ReceiptBuilder add(Good good) {
-        totalTax += taxes.calculateFor(good);
-        totalPrice += totalPriceFor(good);
+    private void addTotalTaxesRow() {
+        receiptRows.add(new TaxesRow(totalTax));
+    }
 
-        receiptRows.add(new ReceiptRow(good.name(), totalPriceFor(good)));
+    private void addTotalPriceRow() {
+        receiptRows.add(new TotalRow(totalPrice));
+    }
+
+    public ReceiptBuilder add(Good good) {
+        incrementTotalTaxes(good);
+        incrementTotalPrice(good);
+        addNewRow(good);
 
         return this;
+    }
+
+    private void addNewRow(Good good) {
+        receiptRows.add(new ReceiptRow(good.name(), totalPriceFor(good)));
+    }
+
+    private void incrementTotalPrice(Good good) {
+        totalPrice += totalPriceFor(good);
+    }
+
+    private void incrementTotalTaxes(Good good) {
+        totalTax += taxes.calculateFor(good);
     }
 
     private double totalPriceFor(Good good) {
