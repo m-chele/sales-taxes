@@ -7,20 +7,20 @@ import salestaxes.taxes.Taxes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Receipt {
+public class ReceiptBuilder {
     private double totalPrice = 0.0;
     private double totalTax = 0.0;
     private Taxes taxes;
     private Display display;
     private List<Row> receiptRows;
 
-    public Receipt(Taxes taxes, Display display) {
+    public ReceiptBuilder(Taxes taxes, Display display) {
         this.taxes = taxes;
         this.display = display;
         this.receiptRows = new ArrayList<>();
     }
 
-    public Receipt build() {
+    public ReceiptBuilder build() {
         receiptRows.add(new EmptyRow());
         receiptRows.add(new TaxesRow(totalTax));
         receiptRows.add(new TotalRow(totalPrice));
@@ -44,7 +44,7 @@ public class Receipt {
         return good.price() + taxes.calculateFor(good);
     }
 
-    public Receipt add(Good good) {
+    public ReceiptBuilder add(Good good) {
         totalTax += taxes.calculateFor(good);
         totalPrice += totalPriceFor(good);
 
