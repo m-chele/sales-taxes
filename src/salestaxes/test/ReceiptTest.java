@@ -8,10 +8,6 @@ import salestaxes.goods.GoodType;
 import salestaxes.taxes.Round;
 import salestaxes.taxes.Taxes;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import static junit.framework.TestCase.assertEquals;
 
 public class ReceiptTest {
@@ -19,14 +15,13 @@ public class ReceiptTest {
 
     @Test
     public void one_row_for_each_good() {
-        List<Good> goods = Arrays.asList(
-                new Good("good name", 10.0, GoodType.OTHER),
-                new Good("good name", 10.0, GoodType.OTHER)
-        );
         Taxes taxes = new Taxes(new Round());
         Display testDisplay = text -> shownText = text;
 
-        Receipt receipt = new Receipt(goods, taxes, testDisplay);
+        Receipt receipt = new Receipt(taxes, testDisplay);
+
+        receipt.add(new Good("good name", 10.0, GoodType.OTHER));
+        receipt.add(new Good("good name", 10.0, GoodType.OTHER));
 
         receipt.complete();
 
@@ -37,7 +32,7 @@ public class ReceiptTest {
     @Test
     public void empty_result_if_no_goods_added() {
         Display testDisplay = text -> shownText = text;
-        Receipt receipt = new Receipt(Collections.emptyList(), null, testDisplay);
+        Receipt receipt = new Receipt(null, testDisplay);
         receipt.complete();
 
         assertEquals("\n", shownText);

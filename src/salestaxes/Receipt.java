@@ -15,8 +15,8 @@ public class Receipt {
     private Display display;
     private List<Row> receiptRows;
 
-    public Receipt(List<Good> goods, Taxes taxes, Display display) {
-        this.goods = goods;
+    public Receipt(Taxes taxes, Display display) {
+        this.goods = new ArrayList<>();
         this.taxes = taxes;
         this.display = display;
         this.totalPrice = 0.0;
@@ -25,7 +25,16 @@ public class Receipt {
     }
 
     public void complete() {
-        generate();
+        for (Good good : goods) {
+            totalTax += taxes.calculateFor(good);
+            totalPrice += totalPriceFor(good);
+
+            receiptRows.add(new ReceiptRow(good.name(), totalPriceFor(good)));
+        }
+
+        receiptRows.add(new EmptyRow());
+        receiptRows.add(new TaxesRow(totalTax));
+        receiptRows.add(new TotalRow(totalPrice));
 
         display.showText(output());
     }
@@ -38,21 +47,11 @@ public class Receipt {
         return output;
     }
 
-    private void generate() {
-        for (Good good : goods) {
-            totalTax += taxes.calculateFor(good);
-            totalPrice += totalPriceFor(good);
-
-            receiptRows.add(new ReceiptRow(good.name(), totalPriceFor(good)));
-        }
-
-        receiptRows.add(new EmptyRow());
-        receiptRows.add(new TaxesRow(totalTax));
-        receiptRows.add(new TotalRow(totalPrice));
-    }
-
     private double totalPriceFor(Good good) {
         return good.price() + taxes.calculateFor(good);
     }
 
+    public void add(Good good) {
+        goods.add(good);
+    }
 }
