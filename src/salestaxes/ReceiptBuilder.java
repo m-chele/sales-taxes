@@ -25,19 +25,7 @@ public class ReceiptBuilder {
         receiptRows.add(new TaxesRow(totalTax));
         receiptRows.add(new TotalRow(totalPrice));
 
-        display.showText(output());
-    }
-
-    private String output() {
-        String output = "";
-        for (Row row : receiptRows) {
-            output += row.print();
-        }
-        return output;
-    }
-
-    private double totalPriceFor(Good good) {
-        return good.price() + taxes.calculateFor(good);
+        display.show(receiptRows);
     }
 
     public ReceiptBuilder add(Good good) {
@@ -47,5 +35,9 @@ public class ReceiptBuilder {
         receiptRows.add(new ReceiptRow(good.name(), totalPriceFor(good)));
 
         return this;
+    }
+
+    private double totalPriceFor(Good good) {
+        return good.price() + taxes.calculateFor(good);
     }
 }

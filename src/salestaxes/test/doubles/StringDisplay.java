@@ -1,19 +1,24 @@
 package salestaxes.test.doubles;
 
 import salestaxes.Display;
+import salestaxes.rows.Row;
+
+import java.util.List;
 
 public class StringDisplay implements Display {
 
-    private String text;
-
-    public String getText() {
-        return text;
-    }
+    private String output = "";
 
     @Override
-    public void showText(String text) {
-        this.text = text;
+    public void show(List<Row> receiptRows) {
+
+        for (Row row : receiptRows) {
+            output += row.print();
+        }
     }
 
+    public String getText() {
+        return output;
+    }
 
 }
