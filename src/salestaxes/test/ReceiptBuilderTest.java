@@ -19,12 +19,11 @@ public class ReceiptBuilderTest {
     @Test
     public void one_row_for_each_good() {
 
-        receiptBuilder.add(new Good("good name", 10.0, GoodType.OTHER))
+        receiptBuilder
+                .add(new Good("good name", 10.0, GoodType.OTHER))
                 .add(new Good("good name", 10.0, GoodType.OTHER));
 
-        receiptBuilder
-
-                .emit();
+        receiptBuilder.emit();
 
         assertEquals("1 good name at 10.00\n1 good name at 10.00\n\nTotal: 20.00", testDisplay.getText());
 
@@ -32,8 +31,7 @@ public class ReceiptBuilderTest {
 
     @Test
     public void empty_result_if_no_goods_added() {
-        receiptBuilder
-                .emit();
+        receiptBuilder.emit();
 
         assertEquals("", testDisplay.getText());
     }
