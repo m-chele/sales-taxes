@@ -20,10 +20,12 @@ public class ReceiptTest {
 
         Receipt receipt = new Receipt(taxes, testDisplay);
 
-        receipt.add(new Good("good name", 10.0, GoodType.OTHER));
-        receipt.add(new Good("good name", 10.0, GoodType.OTHER));
+        receipt.add(new Good("good name", 10.0, GoodType.OTHER))
+                .add(new Good("good name", 10.0, GoodType.OTHER));
 
-        receipt.complete();
+        receipt
+                .build()
+                .emit();
 
         assertEquals("1 good name at 10.00\n1 good name at 10.00\n\nTotal: 20.00", shownText);
 
@@ -33,7 +35,9 @@ public class ReceiptTest {
     public void empty_result_if_no_goods_added() {
         Display testDisplay = text -> shownText = text;
         Receipt receipt = new Receipt(null, testDisplay);
-        receipt.complete();
+        receipt
+                .build()
+                .emit();
 
         assertEquals("\n", shownText);
     }

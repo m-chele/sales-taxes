@@ -8,34 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Receipt {
-    private List<Good> goods;
-    private double totalPrice;
-    private double totalTax;
+    private double totalPrice = 0.0;
+    private double totalTax = 0.0;
     private Taxes taxes;
     private Display display;
     private List<Row> receiptRows;
 
     public Receipt(Taxes taxes, Display display) {
-        this.goods = new ArrayList<>();
         this.taxes = taxes;
         this.display = display;
-        this.totalPrice = 0.0;
-        this.totalTax = 0.0;
         this.receiptRows = new ArrayList<>();
     }
 
-    public void complete() {
-        for (Good good : goods) {
-            totalTax += taxes.calculateFor(good);
-            totalPrice += totalPriceFor(good);
-
-            receiptRows.add(new ReceiptRow(good.name(), totalPriceFor(good)));
-        }
-
+    public Receipt build() {
         receiptRows.add(new EmptyRow());
         receiptRows.add(new TaxesRow(totalTax));
         receiptRows.add(new TotalRow(totalPrice));
 
+        return this;
+    }
+
+    public void emit() {
         display.showText(output());
     }
 
@@ -51,7 +44,12 @@ public class Receipt {
         return good.price() + taxes.calculateFor(good);
     }
 
-    public void add(Good good) {
-        goods.add(good);
+    public Receipt add(Good good) {
+        totalTax += taxes.calculateFor(good);
+        totalPrice += totalPriceFor(good);
+
+        receiptRows.add(new ReceiptRow(good.name(), totalPriceFor(good)));
+
+        return this;
     }
 }
