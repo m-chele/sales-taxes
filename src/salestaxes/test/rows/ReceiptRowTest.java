@@ -1,4 +1,4 @@
-package salestaxes.test;
+package salestaxes.test.rows;
 
 import org.junit.Test;
 import salestaxes.rows.ReceiptRow;

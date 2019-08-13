@@ -6,6 +6,7 @@ import salestaxes.ReceiptBuilder;
 import salestaxes.goods.Good;
 import salestaxes.goods.GoodType;
 import salestaxes.taxes.*;
+import salestaxes.test.doubles.StringDisplay;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -42,7 +43,7 @@ public class AcceptanceTests {
                 .add(new Good("imported bottle of perfume", 27.99, GoodType.OTHER, GoodType.IMPORTED))
                 .add(new Good("bottle of perfume", 18.99, GoodType.OTHER))
                 .add(new Good("packet of headache pills", 9.75, GoodType.MEDICAL))
-                .add(new Good("imported box of chocolates", 11.25, GoodType.FOOD, GoodType.IMPORTED)).build();
+                .add(new Good("imported box of chocolates", 11.25, GoodType.FOOD, GoodType.IMPORTED));
 
         builtReceiptBuilder.emit();
 
@@ -70,8 +71,7 @@ public class AcceptanceTests {
     public void input_2() {
         ReceiptBuilder builtReceiptBuilder = receiptBuilder
                 .add(new Good("imported box of chocolates", 10.00, GoodType.IMPORTED, GoodType.FOOD))
-                .add(new Good("imported bottle of perfume", 47.50, GoodType.OTHER, GoodType.IMPORTED))
-                .build();
+                .add(new Good("imported bottle of perfume", 47.50, GoodType.OTHER, GoodType.IMPORTED));
 
         builtReceiptBuilder.emit();
 
@@ -94,7 +94,7 @@ public class AcceptanceTests {
         ReceiptBuilder builtReceiptBuilder = receiptBuilder
                 .add(new Good("book", 12.49, GoodType.BOOK))
                 .add(new Good("music CD", 14.99, GoodType.OTHER))
-                .add(new Good("chocolate bar", 0.85, GoodType.FOOD)).build();
+                .add(new Good("chocolate bar", 0.85, GoodType.FOOD));
 
         builtReceiptBuilder.emit();
 

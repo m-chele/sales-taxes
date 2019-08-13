@@ -1,4 +1,4 @@
-package salestaxes.test;
+package salestaxes.test.taxes;
 
 
 import org.junit.Test;

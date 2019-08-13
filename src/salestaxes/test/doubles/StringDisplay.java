@@ -1,4 +1,4 @@
-package salestaxes.test;
+package salestaxes.test.doubles;
 
 import salestaxes.Display;
 

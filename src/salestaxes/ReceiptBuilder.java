@@ -20,15 +20,11 @@ public class ReceiptBuilder {
         this.receiptRows = new ArrayList<>();
     }
 
-    public ReceiptBuilder build() {
+    public void emit() {
         receiptRows.add(new EmptyRow());
         receiptRows.add(new TaxesRow(totalTax));
         receiptRows.add(new TotalRow(totalPrice));
 
-        return this;
-    }
-
-    public void emit() {
         display.showText(output());
     }
 

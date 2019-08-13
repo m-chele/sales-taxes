@@ -1,4 +1,4 @@
-package salestaxes.test;
+package salestaxes.test.goods;
 
 import org.junit.Test;
 import salestaxes.goods.Good;
