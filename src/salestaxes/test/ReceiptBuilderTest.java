@@ -1,11 +1,12 @@
 package salestaxes.test;
 
+import org.junit.Before;
 import org.junit.Test;
 import salestaxes.ReceiptBuilder;
 import salestaxes.goods.Good;
 import salestaxes.goods.GoodType;
-import salestaxes.taxes.Round;
 import salestaxes.taxes.Taxes;
+import salestaxes.test.doubles.NoRound;
 import salestaxes.test.doubles.StringDisplay;
 
 import static junit.framework.TestCase.assertEquals;
@@ -13,8 +14,14 @@ import static junit.framework.TestCase.assertEquals;
 public class ReceiptBuilderTest {
 
     StringDisplay testDisplay = new StringDisplay();
-    Taxes taxes = new Taxes(new Round());
-    ReceiptBuilder receiptBuilder = new ReceiptBuilder(taxes, testDisplay);
+    Taxes taxes = new Taxes(new NoRound());
+    ReceiptBuilder receiptBuilder;
+
+    @Before
+    public void setUp() {
+        receiptBuilder = new ReceiptBuilder(taxes, testDisplay);
+    }
+
 
     @Test
     public void one_row_for_each_good() {

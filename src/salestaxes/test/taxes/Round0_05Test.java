@@ -2,15 +2,15 @@ package salestaxes.test.taxes;
 
 
 import org.junit.Test;
-import salestaxes.taxes.Round;
+import salestaxes.taxes.Round0_05;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class RoundTest {
+public class Round0_05Test {
 
     @Test
     public void rounds_up_to_0_05() {
-        Round round005 = new Round();
+        Round0_05 round005 = new Round0_05();
         assertEquals(0.00, round005.round(0.00));
         assertEquals(0.05, round005.round(0.04));
         assertEquals(0.6, round005.round(0.5625));

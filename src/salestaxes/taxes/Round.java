@@ -1,10 +1,6 @@
 package salestaxes.taxes;
 
 
-public class Round {
-
-    public double round(double value) {
-        return Math.ceil(value * 20) / 20.0;
-
-    }
+public interface Round {
+    double round(double value);
 }

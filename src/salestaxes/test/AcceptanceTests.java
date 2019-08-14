@@ -12,7 +12,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class AcceptanceTests {
 
-    Taxes taxes = new Taxes(new Round(), new BasicSalesTax(), new ImportTax(), new NoTax());
+    Taxes taxes = new Taxes(new Round0_05(), new BasicSalesTax(), new ImportTax(), new NoTax());
     private StringDisplay stringDisplay;
     private ReceiptBuilder receiptBuilder;
 
