@@ -1,6 +1,6 @@
 package salestaxes.goods;
 
-public enum GoodType {
+public enum GoodType implements GoodTypeInterface {
     OTHER,
     BOOK,
     MEDICAL,

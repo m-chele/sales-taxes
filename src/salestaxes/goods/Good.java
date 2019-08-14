@@ -6,10 +6,10 @@ import java.util.List;
 public class Good {
     private final String name;
     private final double price;
-    private List<GoodType> types;
+    private List<GoodTypeInterface> types;
 
 
-    public Good(String name, double price, GoodType... types) {
+    public Good(String name, double price, GoodTypeInterface... types) {
         this.name = name;
         this.price = price;
         this.types = Arrays.asList(types);
@@ -23,7 +23,7 @@ public class Good {
         return price;
     }
 
-    public List<GoodType> types() {
+    public List<GoodTypeInterface> types() {
         return types;
     }
 }
