@@ -4,10 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import salestaxes.ReceiptBuilder;
 import salestaxes.goods.Good;
-import salestaxes.goods.GoodType;
 import salestaxes.taxes.Taxes;
 import salestaxes.test.doubles.NoRound;
 import salestaxes.test.doubles.StringDisplay;
+import salestaxes.test.doubles.TestGoodType;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -27,12 +27,12 @@ public class ReceiptBuilderTest {
     public void one_row_for_each_good() {
 
         receiptBuilder
-                .add(new Good("good name", 10.0, GoodType.OTHER))
-                .add(new Good("good name", 10.0, GoodType.OTHER));
+                .add(new Good("good name", 10.0, TestGoodType.ANY))
+                .add(new Good("good name", 20.0, TestGoodType.ANY));
 
         receiptBuilder.emit();
 
-        assertEquals("1 good name at 10.00\n1 good name at 10.00\n\nTotal: 20.00", testDisplay.getText());
+        assertEquals("1 good name at 10.00\n1 good name at 20.00\n\nTotal: 30.00", testDisplay.getText());
 
     }
 

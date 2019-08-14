@@ -2,13 +2,13 @@ package salestaxes.test.taxes;
 
 import org.junit.Test;
 import salestaxes.goods.Good;
-import salestaxes.goods.GoodType;
 import salestaxes.taxes.Round;
 import salestaxes.taxes.Tax;
 import salestaxes.taxes.Taxes;
 import salestaxes.test.doubles.AppliableTax;
 import salestaxes.test.doubles.NoRound;
 import salestaxes.test.doubles.NotAppliableTax;
+import salestaxes.test.doubles.TestGoodType;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -18,7 +18,7 @@ public class TaxesTest {
     private Tax tax20 = new AppliableTax(20);
     private Tax taxNotAppliable = new NotAppliableTax();
     private Round round = new NoRound();
-    private Good good = new Good("something", 10.0, GoodType.OTHER);
+    private Good good = new Good("something", 10.0, TestGoodType.ANY);
 
     @Test
     public void applies_a_single_tax() {
