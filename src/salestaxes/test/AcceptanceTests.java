@@ -3,6 +3,7 @@ package salestaxes.test;
 import org.junit.Before;
 import org.junit.Test;
 import salestaxes.ReceiptBuilder;
+import salestaxes.ReceiptBuilder.Receipt;
 import salestaxes.goods.Good;
 import salestaxes.goods.GoodType;
 import salestaxes.taxes.*;
@@ -20,7 +21,9 @@ public class AcceptanceTests {
     @Before
     public void setUp() {
         stringDisplay = new StringDisplay();
-        receiptBuilder = new ReceiptBuilder(taxes, stringDisplay);
+        receiptBuilder = new ReceiptBuilder()
+                .setDisplay(stringDisplay)
+                .setTaxes(taxes);
     }
 
     //    Input 3:
@@ -39,13 +42,14 @@ public class AcceptanceTests {
     //    Total: 74.68
     @Test
     public void input_3() {
-        ReceiptBuilder builtReceiptBuilder = receiptBuilder
+        Receipt receipt = receiptBuilder
                 .add(new Good("imported bottle of perfume", 27.99, GoodType.OTHER, GoodType.IMPORTED))
                 .add(new Good("bottle of perfume", 18.99, GoodType.OTHER))
                 .add(new Good("packet of headache pills", 9.75, GoodType.MEDICAL))
-                .add(new Good("imported box of chocolates", 11.25, GoodType.FOOD, GoodType.IMPORTED));
+                .add(new Good("imported box of chocolates", 11.25, GoodType.FOOD, GoodType.IMPORTED))
+                .build();
 
-        builtReceiptBuilder.emit();
+        receipt.emit();
 
         String output1 = "1 imported bottle of perfume at 32.19\n"
                 + "1 bottle of perfume at 20.89\n"
@@ -69,11 +73,12 @@ public class AcceptanceTests {
     //    Total: 65.15
     @Test
     public void input_2() {
-        ReceiptBuilder builtReceiptBuilder = receiptBuilder
+        Receipt receipt = receiptBuilder
                 .add(new Good("imported box of chocolates", 10.00, GoodType.IMPORTED, GoodType.FOOD))
-                .add(new Good("imported bottle of perfume", 47.50, GoodType.OTHER, GoodType.IMPORTED));
+                .add(new Good("imported bottle of perfume", 47.50, GoodType.OTHER, GoodType.IMPORTED))
+                .build();
 
-        builtReceiptBuilder.emit();
+        receipt.emit();
 
         String output1 = "1 imported box of chocolates at 10.50\n"
                 + "1 imported bottle of perfume at 54.65\n"
@@ -91,12 +96,13 @@ public class AcceptanceTests {
     //        1 chocolate bar at 0.85
     @Test
     public void input_1() {
-        ReceiptBuilder builtReceiptBuilder = receiptBuilder
+        Receipt receipt = receiptBuilder
                 .add(new Good("book", 12.49, GoodType.BOOK))
                 .add(new Good("music CD", 14.99, GoodType.OTHER))
-                .add(new Good("chocolate bar", 0.85, GoodType.FOOD));
+                .add(new Good("chocolate bar", 0.85, GoodType.FOOD))
+                .build();
 
-        builtReceiptBuilder.emit();
+        receipt.emit();
 
         String output1 = "1 book at 12.49\n"
                 + "1 music CD at 16.49\n"

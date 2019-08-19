@@ -17,17 +17,15 @@ public class ReceiptBuilder {
     private Display display;
     private List<Row> receiptRows;
 
-    public ReceiptBuilder(Taxes taxes, Display display) {
-        this.taxes = taxes;
-        this.display = display;
+    public ReceiptBuilder() {
         this.receiptRows = new ArrayList<>();
     }
 
-    public void emit() {
+    public Receipt build() {
         addTotalTaxesRow();
         addTotalPriceRow();
 
-        display.show(receiptRows);
+        return new Receipt(display);
     }
 
     private void addTotalTaxesRow() {
@@ -36,6 +34,18 @@ public class ReceiptBuilder {
 
     private void addTotalPriceRow() {
         receiptRows.add(new TotalRow(totalPrice));
+    }
+
+    public ReceiptBuilder setDisplay(Display display) {
+        this.display = display;
+
+        return this;
+    }
+
+    public ReceiptBuilder setTaxes(Taxes taxes) {
+        this.taxes = taxes;
+
+        return this;
     }
 
     public ReceiptBuilder add(Good good) {
@@ -60,5 +70,21 @@ public class ReceiptBuilder {
 
     private double totalPriceFor(Good good) {
         return good.price() + taxes.calculateFor(good);
+    }
+
+
+    public class Receipt {
+
+        private Display display;
+
+        public Receipt(Display display) {
+
+            this.display = display;
+        }
+
+        public void emit() {
+            this.display.show(receiptRows);
+        }
+
     }
 }

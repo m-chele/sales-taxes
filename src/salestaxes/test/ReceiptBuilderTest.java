@@ -3,6 +3,7 @@ package salestaxes.test;
 import org.junit.Before;
 import org.junit.Test;
 import salestaxes.ReceiptBuilder;
+import salestaxes.ReceiptBuilder.Receipt;
 import salestaxes.goods.Good;
 import salestaxes.taxes.Taxes;
 import salestaxes.test.doubles.NoRound;
@@ -19,26 +20,29 @@ public class ReceiptBuilderTest {
 
     @Before
     public void setUp() {
-        receiptBuilder = new ReceiptBuilder(taxes, testDisplay);
+        receiptBuilder = new ReceiptBuilder()
+                .setDisplay(testDisplay)
+                .setTaxes(taxes);
     }
-
 
     @Test
     public void one_row_for_each_good() {
 
-        receiptBuilder
+        Receipt receipt = receiptBuilder
                 .add(new Good("good name", 10.0, TestGoodType.ANY))
-                .add(new Good("good name", 20.0, TestGoodType.ANY));
+                .add(new Good("good name", 20.0, TestGoodType.ANY))
+                .build();
 
-        receiptBuilder.emit();
+        receipt.emit();
 
         assertEquals("1 good name at 10.00\n1 good name at 20.00\n\nTotal: 30.00", testDisplay.getText());
-
     }
 
     @Test
     public void empty_result_if_no_goods_added() {
-        receiptBuilder.emit();
+        Receipt receipt = receiptBuilder.build();
+
+        receipt.emit();
 
         assertEquals("", testDisplay.getText());
     }
