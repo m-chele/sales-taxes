@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import salestaxes.ReceiptBuilder;
 import salestaxes.ReceiptBuilder.Receipt;
+import salestaxes.ReceiptStep;
 import salestaxes.goods.Good;
 import salestaxes.goods.GoodType;
 import salestaxes.taxes.*;
@@ -15,15 +16,16 @@ public class AcceptanceTests {
 
     Taxes taxes = new Taxes(new Round0_05(), new BasicSalesTax(), new ImportTax(), new NoTax());
     private StringDisplay stringDisplay;
-    private ReceiptBuilder receiptBuilder;
+    private ReceiptStep receiptBuilder;
 
 
     @Before
     public void setUp() {
         stringDisplay = new StringDisplay();
-        receiptBuilder = new ReceiptBuilder()
+        receiptBuilder = ReceiptBuilder.init()
                 .setDisplay(stringDisplay)
-                .setTaxes(taxes);
+                .setTaxes(taxes)
+                .setupComplete();
     }
 
     //    Input 3:

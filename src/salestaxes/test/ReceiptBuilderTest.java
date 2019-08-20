@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import salestaxes.ReceiptBuilder;
 import salestaxes.ReceiptBuilder.Receipt;
+import salestaxes.ReceiptStep;
 import salestaxes.goods.Good;
 import salestaxes.taxes.Taxes;
 import salestaxes.test.doubles.NoRound;
@@ -16,13 +17,14 @@ public class ReceiptBuilderTest {
 
     StringDisplay testDisplay = new StringDisplay();
     Taxes taxes = new Taxes(new NoRound());
-    ReceiptBuilder receiptBuilder;
+    ReceiptStep receiptBuilder;
 
     @Before
     public void setUp() {
-        receiptBuilder = new ReceiptBuilder()
+        receiptBuilder = ReceiptBuilder.init()
                 .setDisplay(testDisplay)
-                .setTaxes(taxes);
+                .setTaxes(taxes)
+                .setupComplete();
     }
 
     @Test
@@ -46,6 +48,5 @@ public class ReceiptBuilderTest {
 
         assertEquals("", testDisplay.getText());
     }
-
 
 }
