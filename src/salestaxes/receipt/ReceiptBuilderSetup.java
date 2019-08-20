@@ -1,5 +1,6 @@
-package salestaxes;
+package salestaxes.receipt;
 
+import salestaxes.Display;
 import salestaxes.taxes.Taxes;
 
 public interface ReceiptBuilderSetup {

@@ -1,5 +1,6 @@
-package salestaxes;
+package salestaxes.receipt;
 
+import salestaxes.Display;
 import salestaxes.goods.Good;
 import salestaxes.rows.GoodRow;
 import salestaxes.rows.Row;

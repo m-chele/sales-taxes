@@ -2,11 +2,11 @@ package salestaxes.test;
 
 import org.junit.Before;
 import org.junit.Test;
-import salestaxes.ReceiptBuilder;
-import salestaxes.ReceiptBuilder.Receipt;
-import salestaxes.ReceiptBuilderStep;
 import salestaxes.goods.Good;
 import salestaxes.goods.GoodType;
+import salestaxes.receipt.ReceiptBuilder;
+import salestaxes.receipt.ReceiptBuilder.Receipt;
+import salestaxes.receipt.ReceiptBuilderStep;
 import salestaxes.taxes.*;
 import salestaxes.test.doubles.StringDisplay;
 
