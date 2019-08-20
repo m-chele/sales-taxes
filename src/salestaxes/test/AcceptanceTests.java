@@ -1,12 +1,10 @@
 package salestaxes.test;
 
-import org.junit.Before;
 import org.junit.Test;
 import salestaxes.goods.Good;
 import salestaxes.goods.GoodType;
 import salestaxes.receipt.ReceiptBuilder;
 import salestaxes.receipt.ReceiptBuilder.Receipt;
-import salestaxes.receipt.ReceiptBuilderStep;
 import salestaxes.taxes.*;
 import salestaxes.test.doubles.StringDisplay;
 
@@ -14,19 +12,14 @@ import static junit.framework.TestCase.assertEquals;
 
 public class AcceptanceTests {
 
-    Taxes taxes = new Taxes(new Round0_05(), new BasicSalesTax(), new ImportTax(), new NoTax());
-    private StringDisplay stringDisplay;
-    private ReceiptBuilderStep receiptBuilder;
+    private StringDisplay stringDisplay = new StringDisplay();
+    private Taxes taxes = new Taxes(
+            new Round0_05(),
+            new BasicSalesTax(),
+            new ImportTax(),
+            new NoTax()
+    );
 
-
-    @Before
-    public void setUp() {
-        stringDisplay = new StringDisplay();
-        receiptBuilder = ReceiptBuilder.init()
-                .setDisplay(stringDisplay)
-                .setTaxes(taxes)
-                .setupComplete();
-    }
 
     //    Input 3:
     //        1 imported bottle of perfume at 27.99
@@ -44,7 +37,10 @@ public class AcceptanceTests {
     //    Total: 74.68
     @Test
     public void input_3() {
-        Receipt receipt = receiptBuilder
+        Receipt receipt = ReceiptBuilder.init()
+                .setDisplay(stringDisplay)
+                .setTaxes(taxes)
+                .setupComplete()
                 .add(new Good("imported bottle of perfume", 27.99, GoodType.OTHER, GoodType.IMPORTED))
                 .add(new Good("bottle of perfume", 18.99, GoodType.OTHER))
                 .add(new Good("packet of headache pills", 9.75, GoodType.MEDICAL))
@@ -75,7 +71,10 @@ public class AcceptanceTests {
     //    Total: 65.15
     @Test
     public void input_2() {
-        Receipt receipt = receiptBuilder
+        Receipt receipt = ReceiptBuilder.init()
+                .setDisplay(stringDisplay)
+                .setTaxes(taxes)
+                .setupComplete()
                 .add(new Good("imported box of chocolates", 10.00, GoodType.IMPORTED, GoodType.FOOD))
                 .add(new Good("imported bottle of perfume", 47.50, GoodType.OTHER, GoodType.IMPORTED))
                 .build();
@@ -98,7 +97,10 @@ public class AcceptanceTests {
     //        1 chocolate bar at 0.85
     @Test
     public void input_1() {
-        Receipt receipt = receiptBuilder
+        Receipt receipt = ReceiptBuilder.init()
+                .setDisplay(stringDisplay)
+                .setTaxes(taxes)
+                .setupComplete()
                 .add(new Good("book", 12.49, GoodType.BOOK))
                 .add(new Good("music CD", 14.99, GoodType.OTHER))
                 .add(new Good("chocolate bar", 0.85, GoodType.FOOD))
