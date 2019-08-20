@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import salestaxes.ReceiptBuilder;
 import salestaxes.ReceiptBuilder.Receipt;
-import salestaxes.ReceiptStep;
+import salestaxes.ReceiptBuilderStep;
 import salestaxes.goods.Good;
 import salestaxes.taxes.Taxes;
 import salestaxes.test.doubles.NoRound;
@@ -17,7 +17,7 @@ public class ReceiptBuilderTest {
 
     StringDisplay testDisplay = new StringDisplay();
     Taxes taxes = new Taxes(new NoRound());
-    ReceiptStep receiptBuilder;
+    ReceiptBuilderStep receiptBuilder;
 
     @Before
     public void setUp() {

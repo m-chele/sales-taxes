@@ -10,7 +10,7 @@ import salestaxes.taxes.Taxes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReceiptBuilder implements ReceiptSetup, ReceiptStep {
+public class ReceiptBuilder implements ReceiptBuilderSetup, ReceiptBuilderStep {
     private double totalPrice = 0.0;
     private double totalTax = 0.0;
     private Taxes taxes;
@@ -21,7 +21,7 @@ public class ReceiptBuilder implements ReceiptSetup, ReceiptStep {
         this.receiptRows = new ArrayList<>();
     }
 
-    public static ReceiptSetup init() {
+    public static ReceiptBuilderSetup init() {
         return new ReceiptBuilder();
     }
 
@@ -43,19 +43,19 @@ public class ReceiptBuilder implements ReceiptSetup, ReceiptStep {
 
 
     @Override
-    public ReceiptSetup setDisplay(Display display) {
+    public ReceiptBuilderSetup setDisplay(Display display) {
         this.display = display;
         return this;
     }
 
     @Override
-    public ReceiptSetup setTaxes(Taxes taxes) {
+    public ReceiptBuilderSetup setTaxes(Taxes taxes) {
         this.taxes = taxes;
         return this;
     }
 
     @Override
-    public ReceiptStep setupComplete() {
+    public ReceiptBuilderStep setupComplete() {
         return this;
     }
 
