@@ -1,5 +1,5 @@
 # Spent time
-about 11 hours working 1 hour a day (with a two weeks pause for holidays ;) )
+about 17 hours, working 1 hour a day (with a two weeks pause for holidays ;) )
 
 # My assumptions
 * parsing input is out of scope
@@ -22,13 +22,20 @@ implementation with:
 Math.ceil(0.5625 * 20) / 20.0  = 0.60
 
 ## design
-I think I started in a "too much naive" way and initially I treated tax as dependecy of `Good`. This choice
-took me to some difficulties when I wrote the AT 2 (introduction of "import tax"), so I refactored my code to define a
-`Taxes` object that could operate on the base of the `Good` type.
-At the end I'm not completely satisfied about the design, there are some violations of Single Responsibility Principle
-and some coupling that could be reduced. For example:
-* `Receipt` needs a collaborator for output, maybe a sort of general "display"
-* there is duplication in objects of type `Row` (pheraps, not sure row is the best way to shape the problem)     
-* test files are not organized
+Initially I treated tax as dependecy of `Good`. This choice took me to some difficulties when I wrote the AT 2 (introduction of "import tax"), so I refactored my code to define a `Taxes` object that could operate on the base of the `Good` type (Chain of responsibility pattern).
 
+At the end I wasn't completely satisfied about the design, so I created a `Display` collaborator to respect the "Single Responsibility Principle".
 
+At this point I organized the `Receipt` creation as a Builder pattern and (mainly for study) I choosed to go deep in that pattern and I refactored the Builder to be a Checked Builder.
+ 
+
+## things I learned
+* Checked Builder pattern
+  * in particular I noted that is an intelligent way to ensure correctness of an object initialization at compile time 
+* redefine Enum using interfaces
+ 
+
+## next steps 
+* improve tests
+* isolate totalPriceFor(Good)
+* isolate formatting row responsibility
